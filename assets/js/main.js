@@ -60,6 +60,13 @@ var json = {
     ]
 }
 
+ /*
+ * Author: Artur Bruno
+ * Date: 21 Nov 2019
+ * Description:
+ *      Mapa interativo para portal O POVO Online
+ **/
+
 /* array de escalas */
 var scale = []
 //var intervalScale = [];
