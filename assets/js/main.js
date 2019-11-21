@@ -66,8 +66,6 @@ var scale = []
 
 function percorrerArray() {
     json.cidades.forEach(e => {
-        // changeColor(e.id, e.value)
-
         // gera escala
         scale.push(e.value)
         generatePopover(json.categoria, e.id, e.nome, e.value)
@@ -75,44 +73,6 @@ function percorrerArray() {
 
     console.log('scale: ' + scale.sort())
 }
-
-function generateScale() {
-
-    // Instancía maior e menor valor do Array
-    let maiorValor = Math.max(...scale)
-    let menorValor = Math.min(...scale)
-
-    // Gerando razão da progressão aritmética
-    let interval = maiorValor / 9;
-    console.log(' intervals average:' + interval.toFixed(2))
-
-    // Array de intervalos
-    intervalScale = [menorValor]
-    console.log(intervalScale);
-    for (let i = 0; i < 9; i++) {
-        intervalScale.push(Math.floor(interval) + intervalScale[i])
-    }
-    console.log('interval scale: ' + intervalScale)
-    
-    // CRIADOR DE GRADIENTE DAS ESCALAS
-    // selecionando elementos da escala
-    const elems = document.querySelectorAll('.escala div')
-
-    //mudando a opacidade conforme o numero de elementos
-    for (i = 0; i < 9; i++) {
-        
-        // muda a cor de cada elemento da escala
-        const elem = elems[i]
-        elem.style.backgroundColor = `rgba(0, 80, 240, 0.${i+1})`
-    }
-
-    document.querySelector('.InitialValue').innerHTML = menorValor
-    document.querySelector('.LastValue').innerHTML = maiorValor
-
-    //intervalScale = intervalScale;    
-    return intervalScale, scale;
-}
-
 
 function generatePopover(categoria, id, nome, value) {
     document.getElementById(`${id}`).addEventListener("mouseover", function (event) {
@@ -132,33 +92,11 @@ function generatePopover(categoria, id, nome, value) {
 }
 
 function changeColor() {
-    json.cidades.forEach((e, index) => {
-        const elem = document.getElementById(`${e.id}`)
-        if(e.value <= intervalScale[1]){
-            elem.style.fill = 'rgba(0, 80, 240, 0.1)'
-        } else if(e.value <= intervalScale[2]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.2)'
-        } else if(e.value <= intervalScale[3]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.3)'
-        } else if(e.value <= intervalScale[4]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.4)'
-        } else if(e.value <= intervalScale[5]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.5)'
-        } else if(e.value <= intervalScale[6]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.6)'
-        } else if(e.value <= intervalScale[7]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.7)'
-        } else if(e.value <= intervalScale[8]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.8)'
-        } else if(e.value <= intervalScale[9]) {
-            elem.style.fill = 'rgba(0, 80, 240, 0.9)'
-        } else if(e.value <= intervalScale[10]) {
-            elem.style.fill = 'rgba(0, 80, 240, 1)'
-        }
+    json.cidades.forEach( e => {
+        let elem = document.getElementById(`${e.id}`)
+        elem.style.fill = 'rgb(0,155,211)'
     })
 }
 
 percorrerArray()
-generateScale()
 changeColor()
-// console.log(intervalScale + ' <= here');
