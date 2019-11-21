@@ -94,7 +94,7 @@ function generatePopover(categoria, id, nome, value) {
 function changeColor() {
     json.cidades.forEach( e => {
         let elem = document.getElementById(`${e.id}`)
-        elem.style.fill = 'rgb(0,155,211)'
+        elem.style.fill = 'rgb(107,142,35,1)'
     })
 }
 
