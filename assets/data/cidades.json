@@ -1,0 +1,13 @@
+{
+    "cidades": [{
+            "id": "fortaleza",
+            "value": 5,
+            "nome": "Fortaleza"
+        },
+        {
+            "id": "acarau",
+            "value": 30,
+            "nome": "Acaraú"
+        }
+    ]
+}
