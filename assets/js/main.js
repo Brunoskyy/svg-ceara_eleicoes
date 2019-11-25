@@ -1,59 +1,59 @@
 /* var json = require('../data/cidades.json') */
 var json = {
-    "categoria": "Densidade Demográfica",
+    "categoria": "Candidatos",
     "cidades": [{
             "id": "fortaleza",
-            "value": 240,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Fortaleza"
         },
         {
             "id": "acarau",
-            "value": 265,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Acaraú"
         },
         {
             "id": "marco",
-            "value": 380,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Marco"
         },
         {
             "id": "sobral",
-            "value": 325,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Sobral"
         },
         {
             "id": "santa-quiteria",
-            "value": 200,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Santa quitéria"
         },
         {
             "id": "caninde",
-            "value": 289,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Canindé"
         },
         {
             "id": "trairi",
-            "value": 384,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Trairí"
         },
         {
             "id": "acarape",
-            "value": 400,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Acarape"
         },
         {
             "id": "quixeramobim",
-            "value": 50,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Quixeramobim"
         },
         {
             "id": "taua",
-            "value": 400,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Tauá"
         },
         {
             "id": "jaguaretama",
-            "value": 100,
+            "value": 'bonoro(psl), kraken(pt)',
             "nome": "Jaguaretama"
         }
 
@@ -77,24 +77,26 @@ function percorrerArray() {
         scale.push(e.value)
         generatePopover(json.categoria, e.id, e.nome, e.value)
     });
-
-    console.log('scale: ' + scale.sort())
 }
 
 function generatePopover(categoria, id, nome, value) {
     document.getElementById(`${id}`).addEventListener("mouseover", function (event) {
         var posX = event.clientX
         var posY = event.clientY
-        // console.log(posX)
-        // console.log(posY)
-        // console.log(`${categoria}`)
-        // console.log(`${value}`)
 
         document.querySelector('.pop').style.top = `${posY}px`
         document.querySelector('.pop').style.left = `${posX/2}px`
         document.querySelector('.pop').style.display = 'block'
         document.querySelector('.pop .city').innerHTML = `${nome}`
         document.querySelector('.pop .category').innerHTML = `${categoria}: ${value}`
+    })
+}
+
+function closePopover() {
+    const popOver = document.querySelector('.pop')
+    const btnClose = document.querySelector('.pop .btn-close')
+    btnClose.addEventListener('click', function(){
+        popOver.style.display = 'none'
     })
 }
 
@@ -107,3 +109,4 @@ function changeColor() {
 
 percorrerArray()
 changeColor()
+closePopover()
